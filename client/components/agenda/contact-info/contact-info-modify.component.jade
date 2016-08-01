@@ -1,0 +1,5 @@
+div(class="ui attached message")
+	div(class="header") Modificar información de contacto
+div([ngSwitch]="typerService.typeOfContact(selectedContact)" class="ui form attached fluid segment")
+	contact-info-organization-form(*ngSwitchCase="'Organization'", [organization]="selectedContact")
+	contact-info-person-form(*ngSwitchCase="'Person'", [person]="selectedContact")

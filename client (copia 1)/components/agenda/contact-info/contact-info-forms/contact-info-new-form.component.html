@@ -1,0 +1,9 @@
+<h4 class="ui dividing header">Informacion de contacto</h4>
+<div class="ui basic buttons">
+  <div class="ui button" >Persona</div>
+  <div class="ui button active">Organizacion</div>
+</div>
+<div [ngSwitch]="">
+    <contact-info-new-person-form [person]="selectedContact" [action]="'Guardar'" *ngSwitchCase="'Person'"></contact-info-new-person-form>
+    <contact-info-new-organization-form [organization]="selectedContact" [action]="'Guardar'"*ngSwitchCase="'Organization'"></contact-info-new-organization-form>
+</div>

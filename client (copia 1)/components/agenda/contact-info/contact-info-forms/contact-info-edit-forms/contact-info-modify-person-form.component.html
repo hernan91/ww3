@@ -1,0 +1,51 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm" class="ui form">
+	<div class="field">
+		<label>Nombre</label>
+		<div class="fields">
+			<div class="nine wide field">
+				<input [(ngModel)]="person.name" type="text" name="name" placeholder="Nombre/s">
+			</div>
+			<div class="seven wide field">
+				<input [(ngModel)]="person.lastname" type="text" name="lastname" placeholder="Apellido/s">
+			</div>
+		</div>
+	</div>
+	<div class="field">
+		<label>Dirección</label>
+			<div class="fields">
+				<div class="twelve wide field">
+					<input [(ngModel)]="person.direction" type="text" name="direction" placeholder="Direccion">
+				</div>
+				<div class="four wide field">
+					<input [(ngModel)]="person.dir_num" type="text" name="dir_number" placeholder="Numero">		
+				</div>
+			</div>		
+	</div>
+	<div class="field">
+		<div class="fields">
+			<div class="six wide field">
+				<label>Telefono</label>
+				<input [(ngModel)]="person.phone" placeholder="Telefono" name="phone" type="text">
+			</div>
+			<div class="ten wide field">
+				<label>E-mail</label>
+				<input [(ngModel)]="person.email" placeholder="E-mail" name="email" type="text">	
+			</div>
+		</div>
+	</div>
+	<div class="field">
+		<div class="fields">
+			<div class="six wide field">
+				<label>Sitio web</label>
+				<input [(ngModel)]="person.website" placeholder="Sitio web" name="website" type="text">
+			</div>
+			<div class="ten wide field">
+				<label>Fecha de nacimiento</label>
+				<input [(ngModel)]="person.birthday" placeholder="Fecha de nacimiento" name="birthday" type="date">	
+			</div>
+		</div>
+	</div>
+	<button type="submit" [disabled]="!form.form.valid" class="ui blue submit button">Modificar</button>
+		<button class="ui loading button">Loading</button>
+	<div class="ui reset button">Restaurar</div>
+</form>

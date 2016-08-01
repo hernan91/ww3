@@ -1,0 +1,13 @@
+header-categories-list
+div(class="ui vertical fluid menu")
+	div(*ngIf="categories")
+		a(*ngIf="categories" class="teal item active") Todas las categorias
+			div(class="ui teal left pointing label") {{ getNumContacts(categories) }}
+			a(*ngFor="let category of categories" class="item") {{category.getName()}}
+			div(class="ui label") {{category.getContacts().length}}
+				//(click)="onSelectCategory(category); $event"
+				//[ngClass] = "selectedCategory.id === category.id ? active : "
+			i(class="trash icon")
+			i(class="edit icon")
+	div(*ngIf="!categories")
+		span(class="item") No existen categorias!

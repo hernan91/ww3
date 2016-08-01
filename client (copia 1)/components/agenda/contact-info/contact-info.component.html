@@ -1,0 +1,6 @@
+
+<div [ngSwitch]="state" class="ui vertical fluid menu">
+	<contact-info-modify-form *ngSwitchCase="0" [selectedContact]="selectedContact" class="item"></contact-info-modify-form>
+	<contact-info-show-form *ngSwitchCase="1" [selectedContact]="selectedContact" class="item"></contact-info-show-form>
+	<div *ngSwitchDefault>Error, invalid state</div>
+</div>

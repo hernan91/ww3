@@ -1,0 +1,44 @@
+form((ngSubmit)="onSubmit()" #form="ngForm")
+	div(class="field")
+		label Nombre
+		div(class="fields")
+			div(class="nine wide field")
+				input(#name [(ngModel)]="person.name" type="text" name="name" placeholder="Nombre/s" required)
+			div(class="seven wide field")
+				input([(ngModel)]="person.lastname" type="text" name="lastname" placeholder="Apellido/s" required)
+	div(class="field")
+		label Dirección
+			div(class="fields")
+				div(class="twelve wide field")
+					input([(ngModel)]="person.direction" type="text" name="direction" placeholder="Direccion")
+				div(class="four wide field")
+					input([(ngModel)]="person.dir_num" type="number" name="dir_number" placeholder="Numero")
+	div(class="field")
+		div(class="fields")
+			div(class="six wide field")
+				label Telefono
+				input([(ngModel)]="person.phone" placeholder="Telefono" name="phone" type="text")
+			div(class="ten wide field")
+				label E-mail
+				input(#email [(ngModel)]="person.email" placeholder="E-mail" name="email" type="email" required)
+				{{email.className}}
+	div(class="field")
+		div(class="fields")
+			div(class="six wide field")
+				label Sitio web
+				input([(ngModel)]="person.website" placeholder="Sitio web" name="website" type="url")
+			div(class="ten wide field")
+				label Fecha de nacimiento
+				input([(ngModel)]="person.birthday" placeholder="Fecha de nacimiento" name="birthday" type="date")
+	div(class="field")
+		
+		div(class="sixteen wide field")
+			label Observaciones
+			textarea(rows="3")
+	button(type="submit" class="ui blue submit button" smDirTooltip="text..." smDirPosition="right center") Modificar
+	{{form.status==='INVALID'}}
+	{{!form.form.valid}}
+	
+	button(smDirTooltip="text..." smDirPosition="right center" class="ui loading button") Loading
+	div(class="ui reset button") Restaurar
+button(class="ui button" smDirTooltip="text..." smDirPosition="right center") Hover me

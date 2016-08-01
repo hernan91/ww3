@@ -1,0 +1,28 @@
+<div class="ui grid container">
+	<div class="four wide column">
+		<categories-list
+			[categories]="categories"
+			(selectedCategoryEmitter)="onSelectedCategory(category)"
+			(deletedCategoryEmitter)="onDeletedCategory(category)"
+			(modifiedCategoryEmitter)="onModifiedCategory(category)">
+		</categories-list>
+	</div>
+	<div class="five wide column">
+		<contacts-list
+			[selectedCategory]="selectedCategory"
+			[selectedContact]="selectedContact"
+			(addedContactEmitter)="onAddedContact(contact)"
+			(deletedContactEmitter)="onDeletedContact(contact)"
+			(modifiedContactEmitter)="onModifiedContact(contact)"
+			(selectedContactEmitter)="onSelectedContact(contact)">
+		</contacts-list>
+	</div>
+	<div class="seven wide column">
+		<contact-info
+			[state]="infoState"
+			[selectedContact]="selectedContact"
+			(modifiedContactEmitter)="onModifiedContact(contact)">
+		</contact-info>
+		<div>
+	</div>
+</div>

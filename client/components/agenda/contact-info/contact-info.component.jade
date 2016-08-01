@@ -1,0 +1,5 @@
+div([ngSwitch]="state" class="ui")
+	contact-info-modify(*ngSwitchCase="0", [selectedContact]="selectedContact")
+	contact-info-show(*ngSwitchCase="1", [selectedContact]="selectedContact")
+	contact-info-new(*ngSwitchCase="1", [selectedContact]="selectedContact")
+	div(*ngSwitchDefault) Error, invalid state

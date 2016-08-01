@@ -1,0 +1,27 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "system",
+        "moduleResolution": "node",
+        "sourceRoot": "./client",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "removeComments": false,
+        "noImplicitAny": false
+	   /**
+	   "paths": {
+            "baseUrl": "./",
+            "*": [
+                "app/*",
+                "app/main/*"
+            ]
+        }
+	**/
+    },
+    "exclude": [
+        "../node_modules",
+        "../typings/main",
+        "../typings/main.d.ts"
+    ]
+}

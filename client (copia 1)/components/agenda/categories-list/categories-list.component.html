@@ -1,0 +1,21 @@
+<header-categories-list></header-categories-list>
+<div class="ui vertical fluid menu">
+	<div *ngIf="categories">
+		<a *ngIf="categories" class="teal item active">
+			Todas las categorias
+			<div class="ui teal left pointing label">{{ getNumContacts(categories) }}</div>
+		</a>
+		<a class="item" *ngFor="let category of categories">
+			{{category.getName()}}
+			<div class="ui label">{{category.getContacts().length}}
+				(click)="onSelectCategory(category); $event"
+				[ngClass] = "selectedCategory.id === category.id ? active : "
+			</div>
+			<i class="trash icon"></i>
+			<i class="edit icon"></i>
+		</a>
+	</div>
+	<div *ngIf="!categories">
+		<span class="item">No existen categorias!</span>
+	</div>
+</div>

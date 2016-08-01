@@ -1,0 +1,5 @@
+<h4 class="ui dividing header">Modificar información de contacto</h4>
+<div [ngSwitch]="typerService.typeOfContact(selectedContact)">
+    <contact-info-modify-person-form [person]="selectedContact" *ngSwitchCase="'Person'"></contact-info-modify-person-form>
+    <contact-info-modify-organization-form [organization]="selectedContact" *ngSwitchCase="'Organization'"></contact-info-modify-organization-form>
+</div>

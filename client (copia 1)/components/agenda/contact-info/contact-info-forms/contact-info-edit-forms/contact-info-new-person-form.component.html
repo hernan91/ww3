@@ -1,0 +1,39 @@
+<form (ngSubmit)="onSubmit()" #form="ngForm" class="ui form">
+	<div class="field">
+		<div class="fields">
+			<div class="ten wide field">
+				<label>Razon social</label>
+				<input [(ngModel)]="organization.trademark" type="text" name="trademark" placeholder="Razon social">
+			</div>
+			<div class="six wide field">
+				<label>Telefono</label>
+				<input [(ngModel)]="organization.phone" placeholder="Telefono" name="phone" type="text">
+			</div>
+		</div>
+	</div>
+	<div class="field">
+		<label>Dirección</label>
+			<div class="fields">
+				<div class="twelve wide field">
+					<input [(ngModel)]="organization.direction" type="text" name="direction" placeholder="Direccion">
+				</div>
+				<div class="four wide field">
+					<input [(ngModel)]="organization.dir_num" type="text" name="dir_number" placeholder="Numero">		
+				</div>
+			</div>		
+	</div>
+	<div class="field">
+		<div class="fields">
+			<div class="ten wide field">
+				<label>E-mail</label>
+				<input [(ngModel)]="organization.email" placeholder="E-mail" name="email" type="text">	
+			</div>
+			<div class="six wide field">
+				<label>Sitio web</label>
+				<input [(ngModel)]="organization.website" placeholder="Sitio web" name="website" type="text">
+			</div>
+		</div>
+	</div>
+	<button type="submit" [disabled]="!form.form.valid" class="ui blue submit button">Guardar</button>
+	<div class="ui reset button">Restaurar</div>
+</form>
