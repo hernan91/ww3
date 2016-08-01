@@ -6,5 +6,5 @@ server/**/*.js.map
 client/**/*.js
 client/**/*.js.map
 client/**/*.html
-client/**/*~
+client/**/*.*~
 /npm-debug.log
