@@ -1,5 +1,80 @@
 div(class="ui attached message")
 	div(class="header") Modificar información de contacto
 div([ngSwitch]="typerService.typeOfContact(selectedContact)" class="ui form attached fluid segment")
-	contact-info-organization-form(*ngSwitchCase="'Organization'", [organization]="selectedContact")
-	contact-info-person-form(*ngSwitchCase="'Person'", [person]="selectedContact")
+	div(*ngSwitchCase="'Person'")
+		form((ngSubmit)="onSubmit()", [formGroup]="personForm")
+			div(class="field required")
+				label Nombre
+				div(class="fields")
+					div(class="nine wide field")
+						input(type="text" name="name" placeholder="Nombre/s", [formControl]="nameControl")
+					div(class="seven wide field")
+						input(type="text" name="lastname" placeholder="Apellido/s", [formControl]="lastnameControl")
+			div(class="field")
+				label Dirección
+					div(class="fields")
+						div(class="twelve wide field")
+							input(type="text", name="direction" placeholder="Direccion", [formControl]="directionControl")
+						div(class="four wide field")
+							input(type="number" name="dir_num" placeholder="Numero", [formControl]="dir_numControl")
+			div(class="field")
+				div(class="fields")
+					div(class="six wide field")
+						label Telefono
+						input(placeholder="Telefono" name="phone" type="phone" [formControl]="phone")
+					div(class="ten wide field")
+						label E-mail
+						input(#email="ngModel", [(ngModel)]="selectedContact.email", ngControl="email" placeholder="E-mail" name="email" type="email")
+						error-prompt(*ngIf="email.dirty && !email.valid", [errorMessage]="'Ingrese un email valido'")
+			div(class="field")
+				div(class="fields")
+					div(class="six wide field")
+						label Sitio web
+						input(#website="ngModel", [(ngModel)]="selectedContact.website" ngControl="website" placeholder="Sitio web" name="website" type="url")
+						error-prompt(*ngIf="website.dirty && !website.valid", [errorMessage]="'Ingrese un sitio web valido'")
+					div(class="ten wide field")
+						label Fecha de nacimiento
+						input(#birthday="ngModel", [(ngModel)]="selectedContact.birthday" placeholder="Fecha de nacimiento" name="birthday" type="date")
+			div(class="field")
+				div(class="sixteen wide field")
+					label Observaciones
+					textarea(#observations="ngModel", [(ngModel)]="selectedContact.observations", rows="3" name="observations")
+			div(*ngIf="!name.valid && !lastname.valid", class="ui visible error message")
+				ul(class="list")
+					li(*ngIf="!name.valid && !lastname.valid") Debe introducir nombre o apellido (obligatorio)	
+			button([disabled]="" type="submit" class="ui blue submit button" smDirTooltip="text..." smDirPosition="right center") Modificar
+			button(smDirTooltip="text..." smDirPosition="right center" class="ui loading button") Loading
+			div(class="ui reset button", (click)="restoreContact") Restaurar	
+	div(*ngSwitchCase="'Organization'")
+		form((ngSubmit)="onSubmit()" #form="ngForm")
+			div(class="field")
+				div(class="fields")
+					div(class="ten wide field required")
+						label Razon social
+						input(#trademark="ngModel", [(ngModel)]="selectedContact.trademark" type="text" name="trademark" placeholder="Razon social" required)
+						individual-element-error
+					div(class="six wide field")
+						label Telefono
+						input(#phone="ngModel", [(ngModel)]="selectedContact.phone" placeholder="Telefono" name="phone" type="text")
+			div(class="field")
+				label Dirección
+				div(class="fields")
+					div(class="twelve wide field")
+						input(#direction="ngModel", [(ngModel)]="selectedContact.direction" type="text" name="direction" placeholder="Direccion")
+					div(class="four wide field")
+						input(#dir_num="ngModel", [(ngModel)]="selectedContact.dir_num" type="text" name="dir_num" placeholder="Numero")
+			div(class="field")
+				div(class="fields")
+					div(class="ten wide field")
+						label E-mail
+						input(#email="ngModel", [(ngModel)]="selectedContact.email" placeholder="E-mail" name="email" type="text")
+						error-prompt(*ngIf="email.dirty && !email.valid", [errorMessage]="'Ingrese un email valido'")
+					div(class="six wide field")
+						label Sitio web
+						input(#website="ngModel", [(ngModel)]="selectedContact.website" placeholder="Sitio web" name="website" type="text")
+						error-prompt(*ngIf="website.dirty && !website.valid", [errorMessage]="'Ingrese un sitio web valido'")
+			div(*ngIf="!trademark.valid", class="ui visible error message")
+				ul(class="list")
+					li(*ngIf="!trademark.valid") Debe introducir razon social (obligatorio).
+			button(type="submit", [disabled]="!form.form.valid", class="ui blue submit button") Modificar
+			button(type="submit" class="ui reset button", (click)="restoreContact()") Restaurar

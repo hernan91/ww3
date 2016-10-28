@@ -6,6 +6,7 @@ declare var __moduleName: string
 import { Category } from "@classes/Category";
 import { Contact } from "@classes/Contact";
 import { Person } from "@classes/Person";
+import { Organization } from "@classes/Organization";
 
 @Component({
 	selector: "agenda",
@@ -22,9 +23,11 @@ export class AgendaComponent{
 	selectedCategory: Category;
 	selectedContact: Contact;
 	infoState: number;
+	person: Person = new Person(0, "Juanchito", "Quiroz");
+	organization: Organization = new Organization(1, "La anonima");
 	
 	constructor(){
-		this.selectedContact = new Person(0, "Juanchito", "Quiroz");
+		this.selectedContact = this.person;
 		this.infoState = 0;
 	}
 

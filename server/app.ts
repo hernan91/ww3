@@ -4,10 +4,8 @@ import { join } from "path";
 import * as favicon from "serve-favicon";
 import { json, urlencoded } from "body-parser";
 
-import { loginRouter } from "./routes/login";
-import { protectedRouter } from "./routes/protected";
-
 const app: express.Application = express();
+import { AuthChecker } from "./routes/authchecker"
 app.disable("x-powered-by");
 
 app.use(favicon(join(__dirname, "../public", "favicon.ico")));
@@ -16,18 +14,17 @@ app.use(json());
 app.use(urlencoded({ extended: true }));
 
 // api routes
-app.use("/api", protectedRouter);
-app.use("/login", loginRouter);
+//app.use("/api", protectedRouter);
+//app.use("/login", loginRouter);
+//app.use(new AuthChecker(app).router);
 
 app.use('/client', express.static(join(__dirname, '../client')));
-
+console.log("Corriendo")
 // error handlers
 // development error handler
 // will print stacktrace
 if (app.get("env") === "development") {
-
     app.use(express.static(join(__dirname, '../node_modules')));
-
     app.use(function(err, req: express.Request, res: express.Response, next: express.NextFunction) {
         res.status(err.status || 500);
         res.json({
@@ -47,10 +44,6 @@ app.use(function(req: express.Request, res: express.Response, next) {
 // no stacktrace leaked to user
 app.use(function(err: any, req: express.Request, res: express.Response, next: express.NextFunction) {
     res.status(err.status || 500);
-    res.json({
-        error: {},
-        message: err.message
-    });
 });
 
 export { app }

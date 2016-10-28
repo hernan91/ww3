@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 declare var __moduleName: string;
 import { SEMANTIC_COMPONENTS, SEMANTIC_DIRECTIVES } from "ng-semantic"
 import { Person } from "@classes/Person"
+import { NgForm } from '@angular/forms'
 
 @Component({
 	selector: 'contact-info-person-form',

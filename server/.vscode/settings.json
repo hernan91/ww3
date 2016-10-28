@@ -7,5 +7,7 @@
         "**/*.json": true
     },
     "editor.renderIndentGuides": true,
-    "files.autoSave": "off"
+    "files.autoSave": "onFocusChange",
+    "beautify.onSave": true,
+    "editor.insertSpaces": false
 }

@@ -8,5 +8,5 @@
         "**/*.json": true
     },
     "editor.renderIndentGuides": true,
-    "workbench.editor.showTabs": false
+    "workbench.editor.showTabs": false,
 }
